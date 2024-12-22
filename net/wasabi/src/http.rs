@@ -1,6 +1,9 @@
 extern crate alloc;
+use alloc::format;
 use alloc::string::String;
+use alloc::string::ToString;
 use alloc::vec::Vec;
+use noli::net::lookup_host;
 use noli::net::SocketAddr;
 use noli::net::TcpStream;
 use saba_core::error::Error;
@@ -42,7 +45,7 @@ impl HttpClient {
         // request line
         let mut request = String::from("GET /");
         request.push_str(&path);
-        requst.push_str(" HTTP/1.1\n");
+        request.push_str(" HTTP/1.1\n");
 
         // headers
         request.push_str("Host: ");
